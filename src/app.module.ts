@@ -1,11 +1,11 @@
 import { Module, NestModule } from '@nestjs/common';
 import { MovieModule } from './movies/modules/movie.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { config } from 'dotenv';
 import { AuthModule } from './auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
-config();
+import "dotenv/config"
+
 
 
 @Module({
