@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { MovieModel } from './entities/movie.entity';
 import { CreateMovieValidation } from './validations/createMovie.validation';
+import { redis } from 'src/redis/redis.service';
 
 @Injectable()
 export class MovieService {
@@ -23,9 +24,16 @@ export class MovieService {
     return movie;
   }
 
-  async getAllMovies(): Promise<{ data: MovieModel[] }> {
+  async getAllMovies(): Promise<MovieModel[]> {
+    const moviesFromCache = await redis.get("listAllMovies")
+
+    if(moviesFromCache) {
+      return JSON.parse(moviesFromCache)
+    }
+
     const movies = await this.movieRepository.find();
-    return { data: movies };
+    await redis.set("listAllMovies", JSON.stringify(movies))
+    return movies
   }
 
   async updateMovie(id: number, updateData: Partial<MovieModel>): Promise<MovieModel> {
