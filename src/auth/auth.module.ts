@@ -7,8 +7,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { LoginValidationMiddleware } from './middlewares/validation.middleware';
 import { PassportModule } from '@nestjs/passport';
-import { config } from 'dotenv';
-config();
+import "dotenv/config"
 
 
 @Module({
