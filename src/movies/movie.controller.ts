@@ -18,7 +18,7 @@ export class MovieController {
   }
 
   @Get()
-  public async getAll(): Promise<{ data: MovieModel[] }> {
+  public async getAll(): Promise<MovieModel[]> {
     return this.movieService.getAllMovies();
   }
 
