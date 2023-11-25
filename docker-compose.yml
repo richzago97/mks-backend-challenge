@@ -21,3 +21,12 @@ services:
       - ./src:/app/src
       - ./.env:/app/.en
   
+  cache:
+    container_name: redis
+    image: redis:7.2-rc1-alpine
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - '6379:6379'
+    command: redis-server
