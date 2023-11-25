@@ -13,12 +13,11 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: api_movies
-    environment:
-      - PORT=${PORT}
     ports:
       - '8080:8080'
     depends_on:
       - db
     volumes:
       - ./src:/app/src
+      - ./.env:/app/.en
   
