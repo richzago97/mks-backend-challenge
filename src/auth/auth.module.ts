@@ -1,3 +1,4 @@
+import "dotenv/config"
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
@@ -7,11 +8,11 @@ import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { LoginValidationMiddleware } from './middlewares/validation.middleware';
 import { PassportModule } from '@nestjs/passport';
-import "dotenv/config"
+import { MovieModule } from 'src/movies/movie.module';
 
 
 @Module({
-  imports: [UserModule, PassportModule, JwtModule.register({
+  imports: [UserModule, MovieModule, PassportModule, JwtModule.register({
     secret: process.env.JWT_SECRET,
     signOptions: {expiresIn: '12h'}
   })],
