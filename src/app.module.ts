@@ -1,16 +1,16 @@
-import { Module, NestModule } from '@nestjs/common';
-import { MovieModule } from './movies/modules/movie.module';
+import "dotenv/config"
+import { Module} from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
-import "dotenv/config"
+import { UserModule } from './user/user.module';
+import { MovieModule } from "./movies/movie.module";
 
 
 
 @Module({
-  imports: [MovieModule, TypeOrmModule.forRoot({
-    
+  imports: [TypeOrmModule.forRoot({   
     type: 'postgres',
     host: process.env.POSTGRES_HOST,
     port: Number(process.env.POSTGRES_DB_PORT!),
@@ -19,7 +19,7 @@ import "dotenv/config"
     database: process.env.POSTGRES_DB_NAME,
     entities: ["dist/**/*.entity.js"],
     synchronize: true,
-  }), AuthModule],
+  }), AuthModule, MovieModule, UserModule],
   providers: [
     {
       provide: APP_GUARD, 
