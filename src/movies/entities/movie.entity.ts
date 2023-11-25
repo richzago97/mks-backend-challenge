@@ -1,4 +1,3 @@
-import { IsDateString, IsISO8601 } from 'class-validator';
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('movies')
