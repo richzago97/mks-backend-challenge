@@ -12,5 +12,5 @@ export class UserModel {
     email: string;
 
     @Column()
-    password: string;
+    password?: string;
 }
