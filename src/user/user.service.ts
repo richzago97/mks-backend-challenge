@@ -23,9 +23,14 @@ export class UserService {
   }
 
   async create(userData: UserValidation): Promise<UserModel> {
-    const existingUser = await this.usersRepository.findOne({ where: { username: userData.username } });
+    const existingUserName = await this.usersRepository.findOne({ where: { username: userData.username } });
+    const existingUserEmail = await this.usersRepository.findOne({ where: { email: userData.email } });
 
-    if (existingUser) {
+    if (existingUserName) {
+      throw new ConflictException('Username already exists');
+    }
+
+    if (existingUserEmail) {
       throw new ConflictException('Username already exists');
     }
 
