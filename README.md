@@ -1,5 +1,3 @@
-Acha que falta mais alguma coisa, ou já está bem abrangente a minha documentação? 
-
 # Desafio Back-end MKS
 
 Este repositório é parte do desafio para a vaga de back-end na MKS Desenvolvimento de Sistemas e Empreendimentos Ltda.
