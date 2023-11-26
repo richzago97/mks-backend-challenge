@@ -36,8 +36,12 @@ export class UserService {
     user.email = userData.email;
     user.password = hashedPassword; 
 
+    const savedUser = await this.usersRepository.save(user)
 
-    return this.usersRepository.save(user);
+    const {password, ...userWithoutPassword} = savedUser
+
+
+    return userWithoutPassword
   }
 
   findByUsername(username: string): Promise<UserModel> {
