@@ -76,7 +76,7 @@ O projeto está organizado da seguinte maneira:
 3. **Execução via Docker:**
    - Altere a variável `POSTGRES_HOST` no arquivo `.env` para `db`, que é o nome do serviço definido no `docker-compose.yml`.
    - Instale as dependências com `yarn install` ou `npm install`.
-   - Inicie o container Docker usando o comando `docker-compose up`.
+    - Inicie o container Docker usando o comando `docker compose up` ou `docker-compose up`
    - Acesse o container Docker para criar o banco de dados. Use o comando `docker ps` para encontrar o nome do container e, em seguida, execute:
      ```
      docker exec -it nome_do_container psql -U postgres -c 'CREATE DATABASE nome_do_banco;'
