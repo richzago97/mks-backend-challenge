@@ -1,73 +1,109 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Desafio Back-end MKS
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Este repositório é parte do desafio para a vaga de back-end na MKS Desenvolvimento de Sistemas e Empreendimentos Ltda.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Sobre o Desafio
 
-## Description
+O desafio proposto envolve a criação de um sistema de autenticação JWT e uma API CRUD para um catálogo de filmes. As ferramentas e tecnologias utilizadas incluem TypeScript, Nest.js, TypeORM, Swagger, Docker, PostgreSQL e Redis.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Estrutura do Projeto
 
-## Installation
+O projeto está organizado da seguinte maneira:
 
-```bash
-$ yarn install
+```
+|-- dist
+|-- node_modules
+|-- pgdata
+|-- src
+    |-- auth
+    |-- movies
+    |-- redis
+    |-- user
+|-- test
+|-- .env
+|-- .env.example
+|-- ...
 ```
 
-## Running the app
+### Funcionalidades Implementadas
 
-```bash
-# development
-$ yarn run start
+- **Autenticação JWT:** Implementada a autenticação JWT para proteger os endpoints da API.
+- **CRUD de Filmes:** Criados endpoints para criar, listar, atualizar e excluir filmes.
 
-# watch mode
-$ yarn run start:dev
+### 1. Instalação
 
-# production mode
-$ yarn run start:prod
-```
+ **Requisitos:**
+   - Node.js
+   - Nest.js
+   - Docker
+   - PostgreSQL
+   - Redis
 
-## Test
 
-```bash
-# unit tests
-$ yarn run test
+### 2. Passos para Execução
 
-# e2e tests
-$ yarn run test:e2e
+2.1. **Configuração do `.env`:**
+   - Renomeie o arquivo `.env.example` para `.env`.
+   - Defina `POSTGRES_HOST` como `db` para uso com Docker ou `localhost` para ambiente de desenvolvimento.
+   - Preencha as demais variáveis de acordo com a configuração desejada.
 
-# test coverage
-$ yarn run test:cov
-```
+2.2. **Executando com Docker:**
+   - Verifique se a porta `5432` (padrão do PostgreSQL) não está sendo usada por outros processos.
+   - Utilize o comando `docker-compose up` para iniciar o PostgreSQL e o Redis.
+   - Acesse o Docker usando `docker exec -it <nome_do_container> bash`.
+   - Utilize o comando `psql -U <seu_usuario> -d <nome_do_banco>` para acessar o PostgreSQL.
+   - Execute `CREATE DATABASE <nome_do_banco>;` para criar o banco definido no `.env`.
+   - Saia do shell do Docker com `exit`.
 
-## Support
+2.3. **Instalação e Inicialização do Projeto localmente:**
+   - Clone este repositório.
+   - Execute `yarn install` para instalar as dependências.
+   - Inicie o projeto com `yarn start:dev`.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+2.4. **Verificação:**
+   - Verifique se a API está funcionando acessando os endpoints através do Swagger: `http://localhost:3000/api`.
 
-## Stay in touch
+2.5. **Testes Adicionais:**
+   - Certifique-se de que as variáveis de ambiente estão corretamente configuradas para o ambiente de produção, se necessário.
+   - Realize testes para garantir que a aplicação esteja funcionando corretamente em diferentes ambientes.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Rotas da API
 
-## License
+- **Autenticação:** `POST /api/auth/login` para autenticar usuários.
+- **Usuários:** `POST /api/user` para criar um novo usuário.
+- **Filmes:** CRUD de filmes, prefixados com `/api/movies`.
 
-Nest is [MIT licensed](LICENSE).
+### Deploy
+
+Este projeto pode ser facilmente implantado em plataformas como Heroku, Amazon EC2, entre outras. Certifique-se de configurar as variáveis de ambiente para o ambiente de produção.
+
+## Experiência com as Tecnologias
+
+- **Node.js:** Proficiente, 2 anos de experiência.
+- **Nest.js:** Aprendizado durante o desenvolvimento deste projeto.
+- **Redis:** Aprendizado durante o desenvolvimento deste projeto.
+- **TypeScript:** Proficiente, 2 anos de experiência.
+- **Docker:** Proficiente, 1 ano de experiência.
+- **PostgreSQL:** Proficiente, 2 anos de experiência.
+- **Swagger:** Utilizado para documentação da API.
+
+## Considerações Finais
+
+Primeiramente agradeço muito pela oportunidade. O desafio foi uma excelente oportunidade para expandir conhecimentos em Nest.js e Redis, apesar de não ter tido experiência prévia com estas tecnologias, estudei muito durante o prazo me dado, foi divertido e aprendi bastante coisa, fiquei um tempo penando com alguns bugs e problemas que fazem parte, mas no final consegui consertar todos os problemas que tive. Estou ansioso para a oportunidade de contribuir com a equipe. 
+Vou deixar também as referências que peguei para estudar os desconhecidos até então Nest.JS e Redis.
+
+### Referências de Aprendizado
+
+#### Nest.JS:
+- [(NestJS do ZERO) - Rocketseat](https://www.youtube.com/watch?v=TRa55WbWnvQ)
+- [NestJS Tutorial - Matheus Castiglioni](https://www.youtube.com/watch?v=wLr23WHZQhA)
+- [NestJS - Autenticação (Sistema de Login) - Paulo Salvatore](https://www.youtube.com/watch?v=3z6Cs_PtYc0)
+- [Autenticação (Sistema de Login com Token JWT) e Swagger - Fábrica de Sinapse](https://fabricadesinapse.gitbook.io/sinapse-book/nestjs/autenticacao-sistema-de-login-com-token-jwt)
+
+#### Nest.JS + Docker:
+- [Guia passo a passo para configurar um aplicativo NestJS com Docker e PostgreSQL - Dev.to](https://dev.to/chukwutosin_/step-by-step-guide-setting-up-a-nestjs-application-with-docker-and-postgresql-5hei)
+
+#### Redis:
+- [Vídeo sobre Redis - Vimeo](https://vimeo.com/839715245/4a59688d65?share=copy)
+
+Estas referências ajudaram no meu aprendizado e foram fundamentais para desenvolver o projeto, fornecendo insights valiosos e informações práticas sobre Nest.JS, Docker e Redis.
