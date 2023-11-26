@@ -42,7 +42,6 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
       if (error.name === 'JsonWebTokenError') {
         throw new UnauthorizedException('Invalid token');
       }
-      console.log('Unexpected error:', error);
       throw new UnauthorizedException();
     });
   }    

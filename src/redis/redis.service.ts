@@ -6,12 +6,6 @@ const redis = new Redis({
   port: Number(process.env.REDIS_PORT),
 });
 
-redis.on('connect', () => {
-    console.log('Conectado ao Redis!');
-  });
-  
-  redis.on('error', (error) => {
-    console.error('Erro de conexão ao Redis:', error);
-  });
+
 
 export { redis };
