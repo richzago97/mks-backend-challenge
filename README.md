@@ -7,18 +7,6 @@ Este repositório é parte do desafio para a vaga de back-end na MKS Desenvolvim
 O desafio proposto envolve a criação de um sistema de autenticação JWT e uma API CRUD para um catálogo de filmes. As ferramentas e tecnologias utilizadas incluem TypeScript, Nest.js, TypeORM, Swagger, Docker, PostgreSQL e Redis.
 
 
-## Considerações durante o desenvolvimento do projeto
-
-Este desafio foi uma verdadeira imersão no mundo do Nest.js e do Redis, tecnologias que, até então, eram território desconhecido para mim. Apesar da falta de experiência prévia, mergulhei de cabeça e descobri o quão fascinantes e poderosas essas ferramentas podem ser.
-
-Apesar de ter embarcado nessa jornada com pouco conhecimento, dediquei-me intensamente ao aprendizado e ao desenvolvimento das funcionalidades solicitadas. Em um curto espaço de tempo, fui capaz de implementar as features requisitadas, o que me proporcionou uma incrível oportunidade de aprendizado.
-
-Gostaria de expressar meu entusiasmo e agradecimento pela oportunidade oferecida pela equipe da MKS Desenvolvimento. Aprendi imensamente durante este processo e estou animado com a perspectiva de contribuir com a equipe.
-
-No entanto, durante o processo de deploy, um desafio me confrontou: ao realizar a requisição de todos os filmes na área de produção, mesmo após criar a chave `listAllMovies` com sucesso verificando com `redis-cli` utilizando o comando `KEYS *`, não obtive o retorno esperado. Apesar de ter resolvido muitos desafios durante o desenvolvimento, este ponto específico persiste. Adoraria discutir essa questão com a equipe durante o processo de avaliação, compartilhando o que aprendi e buscando soluções conjuntas.
-
-Estou entusiasmado com a possibilidade de trazer minha energia e aprendizado para o time da MKS Desenvolvimento. Agradeço novamente pela oportunidade e estou à disposição para discutir mais sobre esse desafio e minhas experiências.
-
 ### Estrutura do Projeto
 
 O projeto está organizado da seguinte maneira:
